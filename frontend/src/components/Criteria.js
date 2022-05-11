@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Criteria() {
+export default function Criteria( {id, removeCriteria} ) {
 
   const [selectedCriteria, setSelectedCriteria] = useState("Amount");
 
@@ -18,30 +18,29 @@ export default function Criteria() {
 
   if (selectedCriteria === "Amount") {
     type = amountCondition;
-    options2 = <input type="number"/>
+    options2 = <input name='number' type="number"/>
   } else if (selectedCriteria === "Title") {
     type = titleCondition;
-    options2 = <input type="text"/>
+    options2 = <input name='text' type="text"/>
   } else if (selectedCriteria === "Date") {
     type = dateCondition;
-    options2 = <input type="date"/>
+    options2 = <input name='date' type="date"/>
   }
 
-  options = type.map((el) => <option key={el}>{el}</option>);
+  options = type.map((el) => <option value={el} key={el}>{el}</option>);
 
   return (
-    <div className='row2'>
-        <label htmlFor="criteria">Criteria</label>
+      <div className='criteria'>
         <select name="criteria" id="criteria" onChange={changeSelectedCriteria}>
-            <option value="Amount">Amount</option>
-            <option value="Title">Title</option>
-            <option value="Date">Date</option>
+          <option value="Amount">Amount</option>
+          <option value="Title">Title</option>
+          <option value="Date">Date</option>
         </select>
-        <select id="condition1">
-            {options}
+        <select name='condition1' id="condition1">
+          {options}
         </select>
         {options2}
-        <button>-</button>
-    </div>
+        <button type='button' onClick={() => removeCriteria(id)}>-</button>
+      </div>
   )
 }

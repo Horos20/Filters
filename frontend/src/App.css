@@ -1,0 +1,155 @@
+/*   Global, font   */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+span {
+    font-weight: 700;
+}
+
+.page-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.filterNameInput input, .criteria select, .criteria input {
+    width: calc(30% - 10px);
+    margin-right: 10px;
+    height: 25px;
+}
+
+button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+.criteria button {
+    width: 25px;
+    height: 25px;
+    max-width: 10%;
+    max-height: 10%;
+}
+
+
+/*   Filter component   */
+
+.filter {
+    width: 1000px;
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+}
+
+.filterHeader {
+    display: flex;
+    background-color: #03a2bb;
+    padding: 6px 12px 6px 12px;
+    height: 10%;
+}
+
+.filterHeader span {
+    color: white;
+}
+
+.filterHeader button {
+    margin-left: auto;
+    content: "\00d7";
+    background: none;
+	color: white;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    font-weight: 700;
+}
+
+.filterContent {
+    padding: 20px 12px 20px 12px;
+    height: 70%;
+    background-color: #F7F7F7;
+}
+
+.allCriterias {
+    overflow-y: scroll;
+}
+
+#form {
+    height: 100%;
+    display: grid; 
+    grid-auto-columns: 1fr; 
+    grid-template-columns: 0.3fr 1.7fr;
+    grid-template-rows: 0.8fr 2fr 0.4fr 0.8fr;
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "filterName filterNameInput"
+      "criteriaName allCriterias"
+      ". addNew"
+      "selectionName selections"; 
+  }
+
+  .filterName { grid-area: filterName; }
+  .filterNameInput { grid-area: filterNameInput; }
+  .criteriaName { grid-area: criteriaName; }
+  .allCriterias { grid-area: allCriterias; }
+  .addNew { grid-area: addNew; }
+  .selectionName { grid-area: selectionName; }
+  .selections { grid-area: selections; }
+
+.criteria {
+    margin: 0 0 24px 0;
+}
+
+.criteria button {
+    background-color: #EF2773;
+    border-radius: 4px;
+    color: white;
+}
+
+.selections input:nth-child(2), .selections input:nth-child(3) {
+    margin-left: 20px;
+}
+
+.addNew {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0 16px 0;
+}
+
+.filterFooter {
+    display: flex;
+    justify-content: center;
+    background-color: #E8E8E8;
+    padding: 10px 0 10px 0;
+}
+
+.close, .save, .addNew button, .addFilter {
+    background-color: #717171;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    margin: 0 6px 0 6px;
+    width: 15%;
+}
+
+.addFilter {
+    margin: 20px 0 20px 0;
+}
+
+.save {
+    background-color: #2C55F0;
+}
