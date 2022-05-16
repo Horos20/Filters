@@ -2,21 +2,16 @@ import React, { useState } from 'react'
 import Criteria from './Criteria'
 
 export default function Filter( {setShowFilter} ) {
-  const [criterias, setCriterias] = useState([]);
+  const [count, setCount] = useState(0)
+  const [criterias, setCriterias] = useState([{id: 0}]);
 
-  const addNewCriteria = (event) => {
-    setCriterias(criterias.concat(<Criteria key={criterias.length} id={criterias.length} removeCriteria={removeCriteria} />));
+  function addNewCriteria() {
+    setCount(count + 1)
+    setCriterias([...criterias, {id: count + 1}]);
   };
 
   function removeCriteria(id) {
-    criterias.map((d, i) => {
-      if (d === criterias[id-1]) {
-        setCriterias(criterias.slice(i))
-      }
-      console.log(criterias[id-1])
-      console.log(d)
-      return (null)
-    })
+    setCriterias(criterias.filter(element => element.id !== id));
   }
 
   return (
@@ -33,10 +28,14 @@ export default function Filter( {setShowFilter} ) {
             <div className='criteriaName'><span>Criteria</span></div>
             
             {/* Criteria component */}
-            <div className='allCriterias'><Criteria key={criterias.length} id={criterias.length} removeCriteria={removeCriteria} />{criterias}</div>
+            <div className='allCriterias'>
+              {criterias.map((criterias) => (
+                <Criteria key={criterias.id} id={criterias.id} removeCriteria={removeCriteria} />
+              ))}
+            </div>
             
             <div className='addNew'>
-              <button type='button' onClick={addNewCriteria}>+ ADD ROW</button>
+              <button type='button' className='buttonGray' onClick={addNewCriteria}>+ ADD ROW</button>
             </div>
 
             <div className='selectionName'><span>Selection</span></div>
@@ -48,8 +47,8 @@ export default function Filter( {setShowFilter} ) {
           </form>
         </div>
         <div className='filterFooter'>
-            <button onClick={() => setShowFilter(false)} className='close'>CLOSE</button>
-            <button className='save' form='form'>SAVE</button>
+            <button onClick={() => setShowFilter(false)} className='close buttonGray'>CLOSE</button>
+            <button className='save buttonGray' form='form'>SAVE</button>
         </div>
     </div>
   )

@@ -44,9 +44,22 @@ button {
     max-height: 10%;
 }
 
+.addFilter {
+    margin: 20px 0 20px 0;
+}
+
+.buttonGray {
+    background-color: #717171;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    width: 15%;
+}
+
 
 /*   Filter component   */
 
+    /*   FilterHeader   */
 .filter {
     width: 1000px;
     height: 550px;
@@ -78,6 +91,8 @@ button {
     font-weight: 700;
 }
 
+
+    /*   FilterContent   */
 .filterContent {
     padding: 20px 12px 20px 12px;
     height: 70%;
@@ -130,6 +145,9 @@ button {
     margin: 16px 0 16px 0;
 }
 
+
+
+    /*   FilterFooter   */
 .filterFooter {
     display: flex;
     justify-content: center;
@@ -137,17 +155,8 @@ button {
     padding: 10px 0 10px 0;
 }
 
-.close, .save, .addNew button, .addFilter {
-    background-color: #717171;
-    color: white;
-    padding: 10px;
-    border-radius: 6px;
+.close, .save, .addNew button {
     margin: 0 6px 0 6px;
-    width: 15%;
-}
-
-.addFilter {
-    margin: 20px 0 20px 0;
 }
 
 .save {

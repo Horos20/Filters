@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Criteria( {id, removeCriteria} ) {
+export default function Criteria( { removeCriteria, id} ) {
 
   const [selectedCriteria, setSelectedCriteria] = useState("Amount");
 

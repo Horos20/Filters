@@ -6,7 +6,7 @@ function App() {
   const [showFilter, setShowFilter] = useState(false)
   return (
     <div className='page-container'>
-      <button onClick={() => setShowFilter(true)} className='addFilter' type='button'>Add Filter</button>
+      <button onClick={() => setShowFilter(true)} className='addFilter buttonGray' type='button'>Add Filter</button>
       {showFilter === true && <Filter setShowFilter={setShowFilter}/>}
     </div>
   );
