@@ -35,9 +35,9 @@ Users should be able to:
 
 - CSS
 - [React](https://reactjs.org/) - JS library
-- [Nodejs] (https://nodejs.org/en/) - JS runtime 
-- [Express] (https://expressjs.com/) - Nodejs framework
-- [MongoDB] (https://www.mongodb.com/) - NoSQL database
+- [Nodejs](https://nodejs.org/en/) - JS runtime 
+- [Express](https://expressjs.com/) - Nodejs framework
+- [MongoDB](https://www.mongodb.com/) - NoSQL database
 
 
 ## Author
