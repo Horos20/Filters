@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Criteria from './Criteria'
 
-export default function Filter( {setShowFilter} ) {
+export default function Filter( {setShowFilter, setData, data} ) {
   const [count, setCount] = useState(0)
   const [criterias, setCriterias] = useState([{id: 0}]);
 
@@ -12,7 +12,43 @@ export default function Filter( {setShowFilter} ) {
 
   function removeCriteria(id) {
     setCriterias(criterias.filter(element => element.id !== id));
-  }
+  };
+
+  function fetchData(e) {
+    e.preventDefault();
+    if (criterias.length !== 0) {
+      const {filterName, criteria, condition1, condition2, select} = e.target.elements
+      const allCriterias = []
+      const allCondition1 = []
+      const allCondition2 = []
+      for (let i = 0; i < criterias.length; i++) {
+        if (criterias.length === 1) {
+          allCriterias.push(criteria.value)
+          allCondition1.push(condition1.value)
+          allCondition2.push(condition2.value) 
+        } else { 
+          allCriterias.push(criteria[i].value)
+          allCondition1.push(condition1[i].value)
+          allCondition2.push(condition2[i].value)
+        }
+      }
+      fetch('http://localhost:3001', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          filterName: filterName.value,
+          criteria: allCriterias,
+          condition1: allCondition1,
+          condition2: allCondition2,
+          select: select.value
+        })
+        }).then(res => {
+          return res.json()
+        }).then(element => setData([...data, element]))
+      }
+    }
 
   return (
     <div className='filter'>
@@ -21,9 +57,9 @@ export default function Filter( {setShowFilter} ) {
             <button onClick={() => setShowFilter(false)}>x</button>
         </div>
         <div className='filterContent'>
-          <form id='form'>
+          <form id='form' onSubmit={fetchData}>
             <div className='filterName'><span>Filter name</span></div>
-            <div className='filterNameInput'><input name="filterName" type="text"/></div>
+            <div className='filterNameInput'><input name="filterName" type="text" maxLength='20'/></div>
 
             <div className='criteriaName'><span>Criteria</span></div>
             
@@ -40,7 +76,7 @@ export default function Filter( {setShowFilter} ) {
 
             <div className='selectionName'><span>Selection</span></div>
             <div className='selections'>
-              <input type="radio" value="Select1" name='select'/> Select 1
+              <input type="radio" value="Select1" name='select' defaultChecked={true}/> Select 1
               <input type="radio" value="Select2" name='select'/> Select 2
               <input type="radio" value="Select3" name='select'/> Select 3
             </div>

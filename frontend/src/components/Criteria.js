@@ -8,6 +8,12 @@ export default function Criteria( { removeCriteria, id} ) {
     setSelectedCriteria(event.target.value);
   };
 
+  const maxLengthCheck = (object) => {
+    if (object.target.value.length > object.target.maxLength) {
+     object.target.value = object.target.value.slice(0, object.target.maxLength)
+      }
+    }
+
   const amountCondition = ["More", "Less", "Equal"];
   const titleCondition = ["Starts with", "Ends with", "Equal"];
   const dateCondition = ["From", "To"];
@@ -18,13 +24,13 @@ export default function Criteria( { removeCriteria, id} ) {
 
   if (selectedCriteria === "Amount") {
     type = amountCondition;
-    options2 = <input name='number' type="number"/>
+    options2 = <input name='condition2' type="number" maxLength = "9" onInput={maxLengthCheck}/>
   } else if (selectedCriteria === "Title") {
     type = titleCondition;
-    options2 = <input name='text' type="text"/>
+    options2 = <input name='condition2' type="text" maxLength='20'/>
   } else if (selectedCriteria === "Date") {
     type = dateCondition;
-    options2 = <input name='date' type="date"/>
+    options2 = <input name='condition2' type="date"/>
   }
 
   options = type.map((el) => <option value={el} key={el}>{el}</option>);

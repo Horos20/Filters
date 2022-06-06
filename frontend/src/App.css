@@ -53,7 +53,6 @@ button {
     color: white;
     padding: 10px;
     border-radius: 6px;
-    width: 15%;
 }
 
 
@@ -61,14 +60,15 @@ button {
 
     /*   FilterHeader   */
 .filter {
-    width: 1000px;
-    height: 550px;
+    width: 60vw;
+    height: 600px;
     display: flex;
     flex-direction: column;
 }
 
 .filterHeader {
     display: flex;
+    align-items: center;
     background-color: #03a2bb;
     padding: 6px 12px 6px 12px;
     height: 10%;
@@ -161,4 +161,68 @@ button {
 
 .save {
     background-color: #2C55F0;
+}
+
+
+
+
+/*   Table with data   */
+
+.allFilters {
+    background-color: #fafafa;
+    padding: 16px;
+    max-width: 80vw;
+    word-wrap: break-word;
+    margin-bottom: 40px;
+}
+
+.allFilters h4, .allFilters p {
+    text-align: center;
+}
+
+.allFilters h4 {
+    margin-bottom: 8px;
+}
+
+.allFilters p {
+    margin-top: 8px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+table td, table th {
+    word-wrap: break-word;
+    border: 1px solid #ddd;
+    padding: 8px;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+table tr td:first-child {
+    text-decoration: underline;
+}
+
+table tr:nth-child(even){background-color: white;}
+table tr:nth-child(even){background-color: #f2f2f2;}
+
+table tr:hover {background-color: #ddd;}
+
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+/*   Media query   */
+
+@media (max-width: 600px) {
+    .filter {
+        width: 100vw;
+    }
 }
